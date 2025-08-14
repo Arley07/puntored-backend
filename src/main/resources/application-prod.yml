@@ -3,9 +3,9 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:mysql://mainline.proxy.rlwy.net:34214/railway?allowPublicKeyRetrieval=true&useSSL=true&requireSSL=false&serverTimezone=UTC
-    username: root
-    password: aPbIlzIVRYPPuBvQLLdGkKAvlrHkOvfh
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
