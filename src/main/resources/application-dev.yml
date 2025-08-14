@@ -1,0 +1,38 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+  jpa:
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/puntored?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: arley
+    password: arley123
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.example.puntored: DEBUG
+    org.springframework.web: DEBUG
+
+app:
+  timezone: America/Bogota
+  admin:
+    username: admin
+    password: admin123*
+
+jwt:
+  secret: ReplaceThisWithAReallyStrongSecret!
+  expirationMs: 3600000
+
+puntored:
+  api:
+    url: https://us-central1-puntored-dev.cloudfunctions.net/technicalTest-developer/api
+    key: mtrQF6Q11eosqyQnkMY0JGFbGqcxVg5icvfVnX1ifIyWDvwGApJ8WUM8nHVrdSkN
+  auth:
+    user: user0147
+    password: "#3Q34Sh0NlDS"
+
+cors:
+  allowed:
+    origins: http://localhost:5173

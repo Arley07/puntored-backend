@@ -1,0 +1,49 @@
+server:
+  port: ${PORT:8081}
+
+spring:
+  main:
+    allow-circular-references: true
+  security:
+    strategy: MODE_INHERITABLETHREADLOCAL
+  jpa:
+    show-sql: ${SPRING_JPA_SHOW_SQL:false}
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://127.0.0.1:3307/puntored?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:root}
+
+logging:
+  level:
+    org.springframework.security: ${LOG_LEVEL_SPRING_SECURITY:INFO}
+    com.example.puntored: ${LOG_LEVEL_APP:INFO}
+    org.springframework.web: ${LOG_LEVEL_WEB:INFO}
+
+app:
+  timezone: ${APP_TIMEZONE:America/Bogota}
+  admin:
+    username: ${APP_ADMIN_USERNAME:admin}
+    password: ${APP_ADMIN_PASSWORD:admin123*}
+
+jwt:
+  secret: ${JWT_SECRET:CHANGE_ME_DEV}
+  expirationMs: ${JWT_EXPIRATION_MS:3600000}
+
+puntored:
+  api:
+    url: ${PUNTORED_API_URL:https://us-central1-puntored-dev.cloudfunctions.net/technicalTest-developer/api}
+    key: ${PUNTORED_API_KEY:}
+  auth:
+    user: ${PUNTORED_AUTH_USER:}
+    password: ${PUNTORED_AUTH_PASSWORD:}
+
+# CORS: se puede sobreescribir por env con una lista separada por comas
+cors:
+  allowed:
+    origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}

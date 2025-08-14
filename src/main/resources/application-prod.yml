@@ -1,0 +1,41 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://mainline.proxy.rlwy.net:34214/railway?allowPublicKeyRetrieval=true&useSSL=true&requireSSL=false&serverTimezone=UTC
+    username: root
+    password: aPbIlzIVRYPPuBvQLLdGkKAvlrHkOvfh
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org.springframework.security: INFO
+    com.example.puntored: INFO
+    org.springframework.web: INFO
+
+app:
+  timezone: America/Bogota
+  admin:
+    username: admin
+    password: admin123*
+
+jwt:
+  secret: ReplaceThisWithAReallyStrongSecret!
+  expirationMs: 3600000
+
+puntored:
+  api:
+    url: https://us-central1-puntored-dev.cloudfunctions.net/technicalTest-developer/api
+    key: mtrQF6Q11eosqyQnkMY0JGFbGqcxVg5icvfVnX1ifIyWDvwGApJ8WUM8nHVrdSkN
+  auth:
+    user: user0147
+    password: "#3Q34Sh0NlDS"
+
+cors:
+  allowed:
+    origins: http://localhost:5173
