@@ -23,13 +23,12 @@ public class SupplierService {
     }
 
     public Flux<SupplierResponse> getSuppliers() {
-        // Obtener token de Puntored (usa caché si está vigente)
         String token = puntoredAuthClient.getToken();
 
         return webClient.get()
                 .uri("/getSuppliers")
-                .header("Authorization", token) // token ya viene como "Bearer ..."
-                .header("x-api-key", apiKey)     // MUY importante para evitar 403
+                .header("Authorization", token) 
+                .header("x-api-key", apiKey)     
                 .retrieve()
                 .bodyToFlux(SupplierResponse.class);
     }

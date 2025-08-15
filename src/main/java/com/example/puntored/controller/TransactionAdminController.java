@@ -78,7 +78,6 @@ public class TransactionAdminController {
         if (check != null) return check;
         String token = authHeader.substring(7);
         String userId = jwtUtil.getUserId(token);
-        // crear manualmente como PENDING (o podrías marcar SUCCESS si quieres)
         Transaction tx = transactionService.createPending(req, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(tx);
     }

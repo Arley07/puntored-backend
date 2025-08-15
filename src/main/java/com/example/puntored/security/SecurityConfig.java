@@ -80,18 +80,14 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cfg = new CorsConfiguration();
 
-        // orígenes (separados por coma)
         for (String origin : corsAllowedOrigins.split(",")) {
             String o = origin.trim();
             if (!o.isEmpty()) cfg.addAllowedOrigin(o);
         }
 
         cfg.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
-        // permitimos todos los headers para evitar problemas de preflight
         cfg.setAllowedHeaders(Collections.singletonList("*"));
         cfg.setAllowCredentials(true);
-        // (opcional) exponer headers si necesitas leerlos desde el front
-        // cfg.addExposedHeader("Location");
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", cfg);

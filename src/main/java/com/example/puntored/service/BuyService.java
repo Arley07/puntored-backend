@@ -73,7 +73,7 @@ public class BuyService {
                     .bodyValue(request)
                     .retrieve()
                     .bodyToMono(BuyResponse.class)
-                    .block();                                    // <<-- bloquea aquí
+                    .block();                                 
 
             if (resp == null) throw new IllegalStateException("Respuesta vacía de Puntored");
 
@@ -89,7 +89,7 @@ public class BuyService {
             log.info("Transacción exitosa: {}", resp.getTransactionalId());
             return resp;
 
-        } catch (RuntimeException e) { // incluye WebClientResponseException
+        } catch (RuntimeException e) {
             savedTx.setStatus("FAILED");
             savedTx.setTransactionMessage(e.getMessage());
             transactionRepository.save(savedTx);

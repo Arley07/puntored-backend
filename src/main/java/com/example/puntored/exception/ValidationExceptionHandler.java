@@ -57,9 +57,9 @@ public class ValidationExceptionHandler {
             tx.setStatus("FAILED");
             tx.setTransactionMessage(String.join("; ", errores));
             transactionRepository.save(tx);
-            log.warn("⚠️ Transacción inválida guardada con valores por defecto");
+            log.warn("Transacción inválida guardada con valores por defecto");
         } catch (Exception e) {
-            log.error("❌ Error guardando transacción inválida", e);
+            log.error("Error guardando transacción inválida", e);
         }
 
         Map<String, Object> response = new LinkedHashMap<>();

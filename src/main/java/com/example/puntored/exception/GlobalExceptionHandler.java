@@ -29,7 +29,6 @@ public class GlobalExceptionHandler {
         body.put("error", "Error en API Puntored");
         body.put("message", ex.getResponseBodyAsString());
 
-        // Guardar como transacción fallida si es posible
         try {
             Transaction tx = new Transaction();
             tx.setStatus("FAILED");

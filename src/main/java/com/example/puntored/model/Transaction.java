@@ -20,7 +20,7 @@ public class Transaction {
     private String cellPhone;
 
     @Column(nullable = false)
-    private Double value; // cambiado a Double
+    private Double value; 
 
     @Column(length = 20)
     private String status;

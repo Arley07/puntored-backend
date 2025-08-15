@@ -19,7 +19,7 @@ public class User {
     private String passwordHash;
 
     @Column(nullable = false)
-    private String roles; // e.g. "ROLE_ADMIN"
+    private String roles; 
 
     @Column(nullable = false)
     private boolean active = true;

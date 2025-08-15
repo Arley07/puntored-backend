@@ -54,7 +54,6 @@ public class PuntoredAuthClient {
 
         lock.lock();
         try {
-            // Verificar otra vez dentro del lock para evitar carreras
             if (cachedToken != null && expiry != null && Instant.now().isBefore(expiry)) {
                 log.info("🔄 Usando token de Puntored desde caché (dentro de lock)");
                 return cachedToken;
@@ -73,10 +72,10 @@ public class PuntoredAuthClient {
                     .block();
 
             if (resp == null || !resp.containsKey("token")) {
-                throw new RuntimeException("❌ No se obtuvo token de Puntored");
+                throw new RuntimeException("No se obtuvo token de Puntored");
             }
 
-            cachedToken = resp.get("token").toString(); // viene con "Bearer ..."
+            cachedToken = resp.get("token").toString(); 
             expiry = Instant.now().plusSeconds(TOKEN_SAFE_TTL_SECONDS);
 
             log.info("✅ Nuevo token de Puntored obtenido y cacheado hasta {}", expiry);

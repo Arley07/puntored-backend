@@ -24,12 +24,11 @@ public class BuyController {
     @PostMapping
     public ResponseEntity<?> buy(@Valid @RequestBody BuyRequest request) {
         try {
-            BuyResponse resp = buyService.processPurchase(request); // <-- ahora es síncrono
+            BuyResponse resp = buyService.processPurchase(request);
             return ResponseEntity.ok(resp);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(new BuyResponse(e.getMessage()));
         } catch (WebClientResponseException e) {
-            // Devuelve exactamente lo que venga de Puntored
             return ResponseEntity
                     .status(e.getStatusCode())
                     .body(e.getResponseBodyAsString());

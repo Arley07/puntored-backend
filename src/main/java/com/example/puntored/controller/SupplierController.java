@@ -19,7 +19,6 @@ public class SupplierController {
 
     @GetMapping
     public Flux<SupplierResponse> getSuppliers() {
-        // ✅ Ya no recibe authToken porque SupplierService lo obtiene internamente
         return supplierService.getSuppliers();
     }
 }

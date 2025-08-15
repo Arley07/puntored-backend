@@ -13,5 +13,5 @@ public class BuyRequest {
 
     @Min(value = 1000, message = "El valor mínimo es 1,000")
     @Max(value = 100000, message = "El valor máximo es 100,000")
-    private Double value; // cambiado a Double para evitar errores con métodos como intValue()
+    private Double value; 
 }
